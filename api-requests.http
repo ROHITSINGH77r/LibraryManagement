@@ -1,0 +1,107 @@
+### 1. GET All Books (Initially Empty Collection)
+GET http://localhost:8080/books
+Accept: application/json
+
+###
+
+### 2. POST Add Book 1 (Successful Creation - HTTP 201)
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Java Programming",
+  "author": "James Gosling",
+  "category": "Programming",
+  "availableCopies": 5
+}
+
+###
+
+### 3. POST Add Book 2 (Successful Creation - HTTP 201)
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "id": 2,
+  "title": "Clean Code",
+  "author": "Robert C. Martin",
+  "category": "Software Engineering",
+  "availableCopies": 3
+}
+
+###
+
+### 4. POST Duplicate Book ID (Duplicate Prevention - HTTP 409 Conflict)
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Java Programming Duplicate",
+  "author": "James Gosling",
+  "category": "Programming",
+  "availableCopies": 10
+}
+
+###
+
+### 5. GET All Books (Retrieve All - HTTP 200 OK)
+GET http://localhost:8080/books
+Accept: application/json
+
+###
+
+### 6. GET Book by ID (Existing Book - HTTP 200 OK)
+GET http://localhost:8080/books/1
+Accept: application/json
+
+###
+
+### 7. GET Book by ID (Non-existent Book - HTTP 404 Not Found)
+GET http://localhost:8080/books/999
+Accept: application/json
+
+###
+
+### 8. PUT Update Book by ID (Existing Book - HTTP 200 OK)
+PUT http://localhost:8080/books/1
+Content-Type: application/json
+
+{
+  "title": "Java Programming 2nd Edition",
+  "author": "James Gosling",
+  "category": "Advanced Programming",
+  "availableCopies": 8
+}
+
+###
+
+### 9. PUT Update Book by ID (Non-existent Book - HTTP 404 Not Found)
+PUT http://localhost:8080/books/999
+Content-Type: application/json
+
+{
+  "title": "Ghost Book",
+  "author": "Unknown",
+  "category": "Mystery",
+  "availableCopies": 1
+}
+
+###
+
+### 10. DELETE Book by ID (Existing Book - HTTP 200 OK)
+DELETE http://localhost:8080/books/2
+Accept: application/json
+
+###
+
+### 11. DELETE Book by ID (Non-existent Book - HTTP 404 Not Found)
+DELETE http://localhost:8080/books/999
+Accept: application/json
+
+###
+
+### 12. GET All Books (Final Verification - HTTP 200 OK)
+GET http://localhost:8080/books
+Accept: application/json
